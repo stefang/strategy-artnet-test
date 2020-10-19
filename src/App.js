@@ -9,13 +9,11 @@ const topology = {
     name: 'artnet-strategy-test',
   },
   hosts: [{
-    name: 'artnet-host',
-    host: 'localhost',
-    port: '6455'
+    name: 'artnet-host'
   }],
   devices: [{
     hostName: 'artnet-host',
-    type: 'ARTNET_BRIDGE',
+    type: 'ARTNET_BRIGHTSIGN',
     name: 'PARCAN',
   }],
 }
@@ -25,7 +23,7 @@ const { useIotesDevice, useIotesHost } = createIotes({ topology: topology, strat
 const App = () => {
   const [deviceSubscribe, deviceDispatch] = useIotesDevice()
   const [hostSubscribe, hostDispatch] = useIotesHost()
-  var interval;
+  var [interval, setIntervalRef] = useState();
 
   const sendArtnet = (event) => {
     clearInterval(interval);
@@ -74,18 +72,18 @@ const App = () => {
   const sendRandomArtnet = () => {
     deviceDispatch(
       createDeviceDispatchable('PARCAN', 'UPDATE', {
-        1: 255,
-        2: Math.random() > 0.5 ? 250 : 0,
+        0: 255,
+        1: Math.random() > 0.5 ? 255 : 0,
+        2: Math.random() > 0.5 ? 255 : 0,
         3: Math.random() > 0.5 ? 255 : 0,
-        4: Math.random() > 0.5 ? 255 : 0,
       })
     )
   }
 
   useEffect(() => {
-    interval = setInterval(
+    setIntervalRef(setInterval(
       () => sendRandomArtnet()
-      , 250)
+      , 500))
   }, [])
 
   return (
