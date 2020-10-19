@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { createDeviceDispatchable, createHostDispatchable } from '@iotes/core';
 import { createIotes } from '@iotes/react-hooks';
-import { artnetStrategy } from '@iotes/strategy-artnet';
+import { artnetStrategy } from '@stefang/strategy-artnet';
 
 const topology = {
   client: {
@@ -16,7 +16,7 @@ const topology = {
   devices: [{
     hostName: 'artnet-host',
     type: 'ARTNET_BRIDGE',
-    name: 'VDMX',
+    name: 'PARCAN',
   }],
 }
 
@@ -65,7 +65,7 @@ const App = () => {
         break;
     }
     deviceDispatch(
-      createDeviceDispatchable('VDMX', 'UPDATE', val)
+      createDeviceDispatchable('PARCAN', 'UPDATE', val)
     )
   }
 

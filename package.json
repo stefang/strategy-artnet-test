@@ -1,15 +1,16 @@
 {
-  "name": "src",
-  "version": "0.1.0",
+  "name": "artnet-strategy-test",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@iotes/core": "^0.2.9",
     "@iotes/react-hooks": "0.0.5",
+    "@stefang/strategy-artnet": "0.0.4",
     "@iotes/strategy-test": "0.0.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "dmxnet": "^0.5.0",
+    "@stefang/dmxnet": "^0.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
