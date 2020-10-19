@@ -5,12 +5,11 @@
   "dependencies": {
     "@iotes/core": "^0.2.9",
     "@iotes/react-hooks": "0.0.5",
-    "@stefang/strategy-artnet": "0.0.4",
+    "@stefang/strategy-artnet": "0.0.6",
     "@iotes/strategy-test": "0.0.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "@stefang/dmxnet": "^0.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"

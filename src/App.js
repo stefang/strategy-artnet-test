@@ -25,8 +25,10 @@ const { useIotesDevice, useIotesHost } = createIotes({ topology: topology, strat
 const App = () => {
   const [deviceSubscribe, deviceDispatch] = useIotesDevice()
   const [hostSubscribe, hostDispatch] = useIotesHost()
+  var interval;
 
   const sendArtnet = (event) => {
+    clearInterval(interval);
     let val = {}
     console.log(event.currentTarget.value);
     switch (parseInt(event.currentTarget.value)) {
@@ -68,6 +70,23 @@ const App = () => {
       createDeviceDispatchable('PARCAN', 'UPDATE', val)
     )
   }
+
+  const sendRandomArtnet = () => {
+    deviceDispatch(
+      createDeviceDispatchable('PARCAN', 'UPDATE', {
+        1: 255,
+        2: Math.random() > 0.5 ? 250 : 0,
+        3: Math.random() > 0.5 ? 255 : 0,
+        4: Math.random() > 0.5 ? 255 : 0,
+      })
+    )
+  }
+
+  useEffect(() => {
+    interval = setInterval(
+      () => sendRandomArtnet()
+      , 250)
+  }, [])
 
   return (
     <>
