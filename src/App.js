@@ -4,6 +4,8 @@ import { createDeviceDispatchable, createHostDispatchable } from '@iotes/core';
 import { createIotes } from '@iotes/react-hooks';
 import { artnetStrategy } from '@stefang/strategy-artnet';
 
+// Brightsign -> https://github.com/stefang/strategy-artnet-bs-bridge
+// Requires the index.js of the above to be included in the index.html and node to be enables
 const topology = {
   client: {
     name: 'artnet-strategy-test',
@@ -17,6 +19,23 @@ const topology = {
     name: 'PARCAN',
   }],
 }
+
+// Artnet Bridge -> https://github.com/stefang/strategy-artnet-http-bridge
+// const topology = {
+//   client: {
+//     name: 'artnet-strategy-test',
+//   },
+//   hosts: [{
+//     name: 'artnet-host',
+//     host: '127.0.0.1',
+//     port: 6455
+//   }],
+//   devices: [{
+//     hostName: 'artnet-host',
+//     type: 'ARTNET_BRIDGE',
+//     name: 'PARCAN',
+//   }],
+// }
 
 const { useIotesDevice, useIotesHost } = createIotes({ topology: topology, strategy: artnetStrategy })
 
